@@ -1,0 +1,25 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "ChordalClasses.minimalSeparator_isClique",
+    "ChordalClasses.exists_isSimplicial",
+    "ChordalClasses.exists_two_nonadj_isSimplicial",
+    "ChordalClasses.isChordal_iff_exists_isPEO",
+    "ChordalClasses.cliqueNum_le_treewidth_succ",
+    "ChordalClasses.isSplit_iff_isChordal_and_compl",
+    "ChordalClasses.isSplit_iff_forbidden_induced_subgraphs",
+    "ChordalClasses.isCograph_iff_not_pathGraph_four_isIndContained",
+    "ChordalClasses.isThreshold_iff_isSplit_and_isCograph",
+    "ChordalClasses.isThreshold_iff_forbidden_induced_subgraphs",
+    "ChordalClasses.isChordal_iff_nonempty_subtreeRepresentation",
+    "ChordalClasses.treewidth_succ_eq_cliqueNum"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

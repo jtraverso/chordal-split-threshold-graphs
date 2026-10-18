@@ -1,0 +1,227 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Chordal, split, threshold and cograph structure"
+  description: >-
+    A Lean 4 / Mathlib formalization of classical structure theorems for finite simple graphs.
+    Chordal graphs: every minimal a–b separator is a clique, a nonempty finite chordal graph has a
+    simplicial vertex, and a connected non-complete one has two non-adjacent simplicial vertices
+    (Dirac 1961); a finite graph is chordal iff it has a perfect elimination order
+    (Fulkerson–Gross 1965), iff it is the intersection graph of subtrees of a finite tree (Gavril
+    1974); a nonempty finite chordal graph has treewidth ω − 1, and every finite graph has
+    ω ≤ tw + 1. Split graphs: split iff the graph and its complement are chordal, iff no induced
+    2K₂, C₄ or C₅ (Földes–Hammer 1977). Threshold graphs: threshold iff no induced 2K₂, C₄ or P₄
+    (Chvátal–Hammer 1977), iff split and a cograph (no induced P₄). Mathlib has none of these
+    graph classes; their definitions are stated in the Challenge.
+  authors:
+    - "Juan Pablo Traverso Gianini"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Juan Pablo Traverso Gianini"
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05C75", "05C05"]
+
+sources:
+  - title: "On rigid circuit graphs"
+    authors:
+      - "G. A. Dirac"
+    id: "doi:10.1007/BF02992776"
+    type: "paper"
+    location: "Abhandlungen aus dem Mathematischen Seminar der Universität Hamburg 25 (1961), 71–76"
+    relationship: "formalizes"
+    note: "Minimal separators of chordal graphs are cliques; existence of simplicial vertices."
+    license: "all rights reserved"
+    author_endorsement: "n/a"
+  - title: "Incidence matrices and interval graphs"
+    authors:
+      - "D. R. Fulkerson"
+      - "O. A. Gross"
+    id: "doi:10.2140/pjm.1965.15.835"
+    type: "paper"
+    location: "Pacific Journal of Mathematics 15 (1965), 835–855"
+    relationship: "formalizes"
+    note: "Chordal graphs are exactly the graphs with a perfect elimination order."
+    license: "all rights reserved"
+    author_endorsement: "n/a"
+  - title: "The intersection graphs of subtrees in trees are exactly the chordal graphs"
+    authors:
+      - "F. Gavril"
+    id: "doi:10.1016/0095-8956(74)90094-X"
+    type: "paper"
+    location: "Journal of Combinatorial Theory, Series B 16 (1974), 47–56"
+    relationship: "formalizes"
+    note: "Subtree representation of chordal graphs."
+    license: "all rights reserved"
+    author_endorsement: "not-contacted"
+  - title: "Split graphs"
+    authors:
+      - "S. Földes"
+      - "P. L. Hammer"
+    type: "paper"
+    location: "Proceedings of the 8th Southeastern Conference on Combinatorics, Graph Theory and Computing (1977), Congressus Numerantium XIX, 311–315"
+    relationship: "formalizes"
+    note: >-
+      Split graphs are the graphs whose graph and complement are chordal, equivalently those with
+      no induced 2K₂, C₄ or C₅ (no DOI).
+    license: "all rights reserved"
+    author_endorsement: "n/a"
+  - title: "Aggregation of Inequalities in Integer Programming"
+    authors:
+      - "V. Chvátal"
+      - "P. L. Hammer"
+    id: "doi:10.1016/S0167-5060(08)70731-3"
+    type: "paper"
+    location: "Annals of Discrete Mathematics 1 (1977), 145–162"
+    relationship: "formalizes"
+    note: "Threshold graphs and their characterization by the forbidden induced subgraphs 2K₂, C₄, P₄."
+    license: "all rights reserved"
+    author_endorsement: "n/a"
+  - title: "Graph Theory"
+    authors:
+      - "Reinhard Diestel"
+    id: "doi:10.1007/978-3-662-53622-3"
+    type: "book"
+    location: "Graduate Texts in Mathematics 173, 5th edition, Springer (2017), Chapter 12"
+    relationship: "background"
+    note: "Tree-decompositions and chordal graphs; treewidth of chordal graphs."
+    license: "all rights reserved"
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "https://github.com/LeanPool/lean-pool/pull/349"
+    relationship: "builds-on"
+    note: "Chordal graphs, minimal separators and Dirac's theorems (the author's Lean Pool contribution, merged); included here as `Erdos81PaperIIContrib/Chordal.lean`."
+  - id: "https://github.com/LeanPool/lean-pool/pull/577"
+    relationship: "builds-on"
+    note: "Clique-tree theory for chordal graphs (the author's Lean Pool contribution, merged)."
+  - id: "https://github.com/LeanPool/lean-pool/pull/583"
+    relationship: "builds-on"
+    note: "Gavril subtree representations and exact chordal treewidth (the author's Lean Pool contribution, merged)."
+  - id: "https://github.com/LeanPool/lean-pool/pull/587"
+    relationship: "builds-on"
+    note: "Split partitions, cotrees and threshold creation sequences (the author's Lean Pool contribution, merged)."
+  - id: "https://github.com/LeanPool/lean-pool/blob/49cfa8b/LeanPool/BrillNoetherGraphs/TreewidthGonality/Treewidth/TreeDecomposition.lean"
+    relationship: "builds-on"
+    note: "Tree decompositions and treewidth by Nathan Pflueger (Lean Pool, Apache-2.0), included unchanged except for the module prefix."
+
+status:
+  scope: >-
+    Proved for finite simple graphs (vertex types in any universe; the Gavril and exact-treewidth
+    statements for vertex types in `Type`). The Dirac separator theorem holds for every graph and
+    every finite minimal separator.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5"]
+      framework: "Claude Code (Anthropic)"
+      tool_setup: >-
+        AI-assisted development of the library under the author's direction (merged in Lean Pool
+        with proof provenance recorded as AI), and the Palomar packaging (statement selection,
+        verbatim definitions, Solution by the library theorems), checked with `lake build`,
+        `#print axioms` and a comparison of the elaborated Challenge and Solution declarations
+        (Lean v4.35.0-rc3, Mathlib c55e6e786f49471c72fbddbec5415808896aec1e).
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "Natural-language instructions in Spanish, directed by the author."
+  spend_usd: "subscription-based"
+  notes: >-
+    The results were chosen by the human author; the Lean proofs are AI-generated and
+    mechanically verified (no `sorry`, axioms limited to propext, Classical.choice and Quot.sound,
+    identical elaborated types and definitions for the Challenge/Solution pair). The file
+    `TreeDecomposition.lean` is by Nathan Pflueger.
+
+fidelity:
+  divergences: >-
+    Chordal: every cycle (Mathlib's `Walk.IsCycle`) of length at least four has two support
+    vertices adjacent by an edge that is not an edge of the cycle. A minimal a–b separator is a set
+    avoiding a and b that meets every a–b walk, no proper subset of which does; the separator
+    theorem is stated for finite separators. A perfect elimination order is an injective ranking
+    V → ℕ in which the later neighbours of each vertex form a clique. A subtree representation is a
+    finite tree with a connected set of nodes for each vertex, distinct vertices being adjacent iff
+    their sets meet. Treewidth is the least width (largest bag minus one) of a tree decomposition
+    over a finite tree (Pflueger's definition); the clique number is Mathlib's `cliqueNum`. A split
+    partition partitions the vertices into a clique and an independent set; threshold graphs are
+    split graphs admitting a split partition whose independent vertices have nested neighbourhoods
+    (an equivalent form of Chvátal–Hammer's definition); cographs are graphs with no induced
+    four-vertex path. Forbidden induced subgraphs use Mathlib's `IsIndContained`, with
+    2K₂ = K₂ ⊕ K₂, C₄, C₅ = `cycleGraph 4`, `cycleGraph 5` and P₄ = `pathGraph 4`. Finite vertex sets
+    are assumed where the classical statements are about finite graphs.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Claude Opus 5.5 (AI agent in Claude Code, acting for the author)"
+  notes: >-
+    Agent review by Claude Opus 5.5, distinct from the mechanical verification: the agent
+    compared the statements and definitions with the cited theorems, checked that the Challenge
+    definitions are verbatim copies of the library's, and confirmed by `lake build`,
+    `#print axioms` and a comparison of the fully elaborated Challenge and Solution declarations
+    that the proofs use no `sorry` and only propext, Classical.choice and Quot.sound. The library
+    was reviewed and merged in Lean Pool. The author directed the work and approved the
+    statements. No independent human mathematical review has been performed. The results are
+    classical; no mathematical novelty is claimed.
+
+alignment:
+  namespace: "ChordalClasses"
+  statements:
+    - source: "Dirac (1961): minimal separators of chordal graphs are cliques"
+      lean: "ChordalClasses.minimalSeparator_isClique"
+      module: "Challenge"
+      status: "proved"
+    - source: "Dirac (1961): a nonempty finite chordal graph has a simplicial vertex"
+      lean: "ChordalClasses.exists_isSimplicial"
+      module: "Challenge"
+      status: "proved"
+    - source: "Dirac (1961): two non-adjacent simplicial vertices in a connected non-complete chordal graph"
+      lean: "ChordalClasses.exists_two_nonadj_isSimplicial"
+      module: "Challenge"
+      status: "proved"
+    - source: "Fulkerson–Gross (1965): chordal iff perfect elimination order"
+      lean: "ChordalClasses.isChordal_iff_exists_isPEO"
+      module: "Challenge"
+      status: "proved"
+    - source: "Gavril (1974): chordal iff intersection graph of subtrees of a tree"
+      lean: "ChordalClasses.isChordal_iff_nonempty_subtreeRepresentation"
+      module: "Challenge"
+      status: "proved"
+    - source: "Clique number at most treewidth plus one"
+      lean: "ChordalClasses.cliqueNum_le_treewidth_succ"
+      module: "Challenge"
+      status: "proved"
+    - source: "Chordal graphs have treewidth equal to clique number minus one"
+      lean: "ChordalClasses.treewidth_succ_eq_cliqueNum"
+      module: "Challenge"
+      status: "proved"
+    - source: "Földes–Hammer (1977): split iff graph and complement chordal"
+      lean: "ChordalClasses.isSplit_iff_isChordal_and_compl"
+      module: "Challenge"
+      status: "proved"
+    - source: "Földes–Hammer (1977): split iff no induced 2K₂, C₄, C₅"
+      lean: "ChordalClasses.isSplit_iff_forbidden_induced_subgraphs"
+      module: "Challenge"
+      status: "proved"
+    - source: "Cographs: no induced P₄"
+      lean: "ChordalClasses.isCograph_iff_not_pathGraph_four_isIndContained"
+      module: "Challenge"
+      status: "proved"
+    - source: "Threshold graphs are exactly the split cographs"
+      lean: "ChordalClasses.isThreshold_iff_isSplit_and_isCograph"
+      module: "Challenge"
+      status: "proved"
+    - source: "Chvátal–Hammer (1977): threshold iff no induced 2K₂, C₄, P₄"
+      lean: "ChordalClasses.isThreshold_iff_forbidden_induced_subgraphs"
+      module: "Challenge"
+      status: "proved"
+
+acknowledgements: >-
+  Mathlib and the Lean community; Lean Pool and its maintainers; Nathan Pflueger for the tree
+  decomposition and treewidth file.
